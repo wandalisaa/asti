@@ -1,38 +1,62 @@
-import * as React from "react"
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable import/prefer-default-export */
+import * as React from 'react';
+import { ChakraProvider, theme } from '@chakra-ui/react';
 import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
+import Home from './routes/Home';
+import Contact from './routes/Contact';
+import Province from './routes/Province';
+import Health from './routes/Health';
+import Food from './routes/Food';
+import Cause from './routes/Cause';
+import Login from './routes/Login';
+import Register from './routes/Register';
+import Simulation from './routes/Simulation';
 
-export const App = () => (
-  <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
-    </Box>
-  </ChakraProvider>
-)
+export function App() {
+  return (
+    <ChakraProvider theme={theme}>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/health">
+            <Health />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route path="/cause">
+            <Cause />
+          </Route>
+          <Route path="/food">
+            <Food />
+          </Route>
+          <Route path="/simulation">
+            <Simulation />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
+          <Route path="/province">
+            <Province />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
+    </ChakraProvider>
+  );
+}
