@@ -2,7 +2,7 @@
 /* eslint-disable react/function-component-definition */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable max-len */
-/* eslint linebreak-style: ["error", "windows"] */
+/* eslint-disable linebreak-style */
 import React from 'react';
 import {
   Box,
